@@ -1,0 +1,26 @@
+import assert from 'assert';
+import { detectPatterns } from '../src';
+
+assert.deepEqual(detectPatterns('009.bit'), new Set(['AAB', '999']));
+assert.deepEqual(detectPatterns('333.bit'), new Set(['AAA', '999']));
+assert.deepEqual(detectPatterns('2112.bit'), new Set(['ABBA', '10K']));
+assert.deepEqual(detectPatterns('45555.bit'), new Set(['ABBBB', '100K']));
+assert.deepEqual(detectPatterns('888000.bit'), new Set(['AAABBB', 'XXX000']));
+assert.deepEqual(detectPatterns('0098.bit'), new Set(['10K', 'AABC', '0XXX', '00XX']));
+assert.deepEqual(detectPatterns('0x9832.bit'), new Set(['0x10K']));
+assert.deepEqual(detectPatterns('0311.bit'), new Set(['ABCC', '0XXX', '10K', 'MMDD']));
+assert.deepEqual(detectPatterns('11112222.bit'), new Set(['AAAABBBB']));
+assert.deepEqual(detectPatterns('001°.bit'), new Set(['360Degree']));
+assert.deepEqual(detectPatterns('0x11.bit'), new Set(['0x99', '2Hex']));
+assert.deepEqual(detectPatterns('零零六.bit'), new Set(['999CN']));
+assert.deepEqual(detectPatterns('漆壱漆.bit'), new Set(['999JP']));
+assert.deepEqual(detectPatterns('٥٥٤.bit'), new Set(['Arabic999']));
+assert.deepEqual(detectPatterns('🇨🇳001.bit'), new Set(['Flag999']));
+assert.deepEqual(detectPatterns('0168.bit'), new Set(['0XXX', 'ABCD', '10K']));
+assert.deepEqual(detectPatterns('00900.bit'), new Set(['00XX0', '00XXX', '100K', 'AABAA', 'XXX00']));
+assert.deepEqual(detectPatterns('12345.bit'), new Set(['ABCDE', 'XABCD', '100K']));
+assert.deepEqual(detectPatterns('13500000000.bit'), new Set(['XXXAAAAAAAA']));
+assert.deepEqual(detectPatterns('1202.bit'), new Set(['TimesTable', '10K', 'MMDD']));
+assert.deepEqual(detectPatterns('603948.bit'), new Set(['AShareCode']));
+assert.deepEqual(detectPatterns('8350000.bit'), new Set(['WanClub']));
+assert.deepEqual(detectPatterns('0xac.bit'), new Set(['2Hex']));
